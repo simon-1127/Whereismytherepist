@@ -901,10 +901,31 @@ function toggleBilling() {
 }
 
 // ---- notify form submit ----
-function handleNotifySubmit(e) {
+async function handleNotifySubmit(e) {
   e.preventDefault();
-  document.getElementById('waitlistForm').style.display = 'none';
-  document.getElementById('notifySuccess').classList.add('show');
+
+  const name  = document.getElementById('fname').value;
+  const email = document.getElementById('femail').value;
+  const phone = document.getElementById('fphone').value;
+
+  try {
+    const res = await fetch('notify.php', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, email, phone })
+    });
+
+    const result = await res.json();
+
+    if (result.success) {
+      document.getElementById('waitlistForm').style.display = 'none';
+      document.getElementById('notifySuccess').classList.add('show');
+    } else {
+      alert('Something went wrong. Please try again.');
+    }
+  } catch (err) {
+    alert('Network error. Please try again.');
+  }
 }
 </script>
 
