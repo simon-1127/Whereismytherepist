@@ -202,7 +202,10 @@ footer{background:#0D1813;padding:60px 32px 32px;}
 .team-member:hover{transform:translateY(-6px);box-shadow:0 12px 30px rgba(0,0,0,.1);}
 .team-member .avatar{
   width:100%;aspect-ratio:1;background:linear-gradient(135deg,var(--sage),var(--lavender));
-  display:flex;align-items:center;justify-content:center;font-size:64px;
+  display:flex;align-items:center;justify-content:center;font-size:64px;overflow:hidden;
+}
+.team-member .avatar img{
+  width:100%;height:100%;object-fit:cover;display:block;
 }
 .team-member .info{padding:24px;}
 .team-member .name{font-weight:700;font-size:16px;color:var(--ink);margin-bottom:4px;}
